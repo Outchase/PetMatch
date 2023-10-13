@@ -1,6 +1,3 @@
-#ifndef ICONS_H
-#define ICONS_H
-
 #include <string>
 
 enum AnimalLabels {
@@ -16,12 +13,18 @@ enum AnimalLabels {
 };
 
 class Icons {
+
+//icons
+//label
+//ammount
+//4x4 grid must be 8 cards
+
 public:
 
-void shuffleArray(enum AnimalLabels arr[], int size);
-
-std::string arrCards[lFlippedCard+1][9]{
-               {
+    void ShuffleArray(AnimalLabels arr[], int size);
+    void PrintCards(int rows, int cols, AnimalLabels arrAnimals[]);
+    std::string arrCards[lFlippedCard+1][9]{
+        {
             "#################",
             "#               #",
             "#   ,-.___,-.   #",
@@ -120,12 +123,6 @@ std::string arrCards[lFlippedCard+1][9]{
             "#       ##      #",
             "#################"
         }
-};
+    };
 
-//icons
-//label
-//ammount
-//4x4 grid must be 8 cards
- 
 };
-#endif
