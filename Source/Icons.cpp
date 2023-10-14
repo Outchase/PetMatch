@@ -14,18 +14,24 @@ void Icons::ShuffleArray(enum AnimalLabels arr[], int size) {
     }
 }
 
-void Icons::PrintCards(int rows, int cols, AnimalLabels arrAnimals[]){
-    //int count =0;
-    //printf(" %d %d ", rows, cols);
+void Icons::PrintCards(int rows, int cols, AnimalLabels arrAnimals[], int tarRow[], int tarCol[]){
+    //printf("%d %d", tarRow[0], tarRow[1]);
+    //printf("%d %d", tarCol[0], tarCol[1]);
+    printf("\n");
+
+    int count = 0;
+    
     for (int row = 0; row < rows; row++) {
         for (int i = 0; i < sizeof(arrCards[lFlippedCard+1]) / sizeof(arrCards[lFlippedCard+1][0]); i++) {
             for (int j = 0; j < cols; j++)
             {
-                //print shuffled flipped cards
-                //printf("%s ", arrCards[lFlippedCard][i].c_str());
 
                 //print shuffled cards with icons
-                printf("%s ", arrCards[arrAnimals[row * cols + j]][i].c_str());
+                if(row == tarRow[count]-1 && j==tarCol[count]-1 || row == tarRow[count+1]-1 && j==tarCol[count+1]-1){
+                    printf("%s ", arrCards[arrAnimals[row * cols + j]][i].c_str());
+                }else{
+                    printf("%s ", arrCards[lFlippedCard][i].c_str());
+                }
             }
             printf("\n");
             

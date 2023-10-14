@@ -22,7 +22,7 @@ class Icons {
 public:
 
     void ShuffleArray(AnimalLabels arr[], int size);
-    void PrintCards(int rows, int cols, AnimalLabels arrAnimals[]);
+    void PrintCards(int rows, int cols, AnimalLabels arrAnimals[], int tarRow[], int tarCol[]);
     std::string arrCards[lFlippedCard+1][9]{
         {
             "#################",
