@@ -25,12 +25,18 @@ void Icons::PrintCards(int rows, int cols, AnimalLabels arrAnimals[], int tarRow
         for (int i = 0; i < sizeof(arrCards[lFlippedCard+1]) / sizeof(arrCards[lFlippedCard+1][0]); i++) {
             for (int j = 0; j < cols; j++)
             {
+                //printf("TarRow: %d ", tarRow[count]);
+                //printf("TarCol: %d ", tarCol[count]);
+                //printf("ArrAnimals: %d ", arrAnimals[row * cols + j]);
+
+                //ID of shuffled array
+                printf("%d ", arrAnimals[row * cols+j]);
 
                 //print shuffled cards with icons
                 if(row == tarRow[count]-1 && j==tarCol[count]-1 || row == tarRow[count+1]-1 && j==tarCol[count+1]-1){
-                    printf("%s ", arrCards[arrAnimals[row * cols + j]][i].c_str());
+                    //printf("%s ", arrCards[arrAnimals[row * cols + j]][i].c_str());                  
                 }else{
-                    printf("%s ", arrCards[lFlippedCard][i].c_str());
+                   //printf("%s ", arrCards[lFlippedCard][i].c_str());
                 }
             }
             printf("\n");
@@ -39,4 +45,3 @@ void Icons::PrintCards(int rows, int cols, AnimalLabels arrAnimals[], int tarRow
     }
 
 }
-
