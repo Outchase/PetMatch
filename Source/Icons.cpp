@@ -14,7 +14,7 @@ void Icons::ShuffleArray(enum AnimalLabels arr[], int size) {
     }
 }
 
-void Icons::PrintCards(int rows, int cols, AnimalLabels arrAnimals[], int tarRow[], int tarCol[]){
+void Icons::PrintCards(int rows, int cols, AnimalLabels arrAnimals[], int tarRow[], int tarCol[], int arrMatch[]){
     //printf("%d %d", tarRow[0], tarRow[1]);
     //printf("%d %d", tarCol[0], tarCol[1]);
     printf("\n");
@@ -27,21 +27,39 @@ void Icons::PrintCards(int rows, int cols, AnimalLabels arrAnimals[], int tarRow
             {
                 //printf("TarRow: %d ", tarRow[count]);
                 //printf("TarCol: %d ", tarCol[count]);
+                //Print all IDs of Memo value
                 //printf("ArrAnimals: %d ", arrAnimals[row * cols + j]);
 
                 //ID of shuffled array
-                printf("%d ", arrAnimals[row * cols+j]);
+                //printf("%d ", arrAnimals[row * cols+j]);
 
                 //print shuffled cards with icons
-                if(row == tarRow[count]-1 && j==tarCol[count]-1 || row == tarRow[count+1]-1 && j==tarCol[count+1]-1){
-                    //printf("%s ", arrCards[arrAnimals[row * cols + j]][i].c_str());                  
+                /*if(row == tarRow[count]-1 && j==tarCol[count]-1 || row == tarRow[count+1]-1 && j==tarCol[count+1]-1){
+                    printf("%s ", arrCards[arrAnimals[row * cols + j]][i].c_str());                  
                 }else{
-                   //printf("%s ", arrCards[lFlippedCard][i].c_str());
-                }
+                   printf("%s ", arrCards[lFlippedCard][i].c_str());
+                }*/
+                
+                //ERORRRR try to fix it
+                /*if(FindInArray(arrMatch, sizeof(arrMatch) / sizeof(arrMatch[0]), arrAnimals[row * cols+j])){
+                    printf("Match");
+                   // printf("%s ", arrCards[arrAnimals[row * cols + j]][i].c_str());                  
+                }else{
+                   printf("%s ", arrCards[lFlippedCard][i].c_str());
+                }*/
             }
             printf("\n");
             
         }
     }
 
+}
+
+bool Icons::FindInArray(int arrMatch[],int size, enum AnimalLabels value){
+    for (int i = 0; i < size; i++) {
+        if (arrMatch[i] == value) {
+            return true; // Value found in the array
+        }
+    }
+    return false;
 }

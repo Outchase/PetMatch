@@ -22,7 +22,8 @@ class Icons {
 public:
 
     void ShuffleArray(AnimalLabels arr[], int size);
-    void PrintCards(int rows, int cols, AnimalLabels arrAnimals[], int tarRow[], int tarCol[]);
+    void PrintCards(int rows, int cols, AnimalLabels arrAnimals[], int tarRow[], int tarCol[], int arrMatch[]);
+    bool FindInArray(int arrMatch[], int size, enum AnimalLabels value);
     std::string arrCards[lFlippedCard+1][9]{
         {
             "#################",

@@ -27,6 +27,16 @@ void SelectCards(int targRow[], int targCols[]){
     }
 }
 
+void MatchChecker(AnimalLabels animals[], int targRow[], int rows, int targCols[],  int arrMatch[], int arrMatchIndex){
+    if(animals[((targRow[0]-1)*rows+targCols[0]-1)] == animals[((targRow[1]-1)*rows+targCols[1]-1)]){
+        //printf("\n%d ", animals[((targRow[0]-1)*rows+targCols[0]-1)]); 
+        //printf("\n%d ", animals[((targRow[1]-1)*rows+targCols[1]-1)]); 
+        printf("\nMatch\n");
+        arrMatch[arrMatchIndex] = animals[((targRow[0]-1)*rows+targCols[0]-1)];
+        arrMatchIndex++;
+    }
+}
+
 int main(){
     Icons icons;
 
@@ -35,7 +45,9 @@ int main(){
     int cols = 4;
     int targRow[2];
     int targCols[2];
-    int arrMatch[16];
+    int arrMatch[8]{0,1,2,3,4,5,6,7};
+    int arrMatchIndex = 0; // Initialize an index to keep track of the position in arrMatch
+
 
     AnimalLabels animals[18];
 
@@ -53,7 +65,7 @@ int main(){
     }*/
 
     // Print the Cards
-    //icons.PrintCards(rows, cols, animals, targRow, targCols);
+    icons.PrintCards(rows, cols, animals, targRow, targCols, arrMatch);
 
     // Add While when game is over
     //system("cls");
@@ -71,10 +83,12 @@ int main(){
         printf("%d ", animals[i]);
     }
 
+    printf("\n");
+
     SelectCards(targRow, targCols);
 
     //Print the Cards
-    //icons.PrintCards(rows, cols, animals, targRow, targCols);
+    icons.PrintCards(rows, cols, animals, targRow, targCols, arrMatch);
 
     /*printf("Row: ");
     for (int i = 0; i < sizeof(targRow) / sizeof(targRow[0]); i++) {
@@ -93,20 +107,11 @@ int main(){
 
     printf("\n");
 
-    if(animals[((targRow[0]-1)*rows+targCols[0]-1)] == animals[((targRow[1]-1)*rows+targCols[1]-1)]){
-        
-        printf("\n%d ", animals[((targRow[0]-1)*rows+targCols[0]-1)]); 
-        printf("\n%d ", animals[((targRow[1]-1)*rows+targCols[1]-1)]); 
-        printf("\nMatch\n");
-        animals[0] = animals[((targRow[0]-1)*rows+targCols[0]-1)];
-        //animals[1] = animals[((targRow[1]-1)*rows+targCols[1]-1)];
-    }
+
+    MatchChecker(animals, targRow, rows, targCols, arrMatch, arrMatchIndex);
 
 
-
-    for (int i = 0; i < 2; i++) {
-        printf("%d ", arrMatch[i]);
-    }
+    //printf("%d ", arrMatch[0]);
 
     //printf("\n(%d-1) * %d + %d - 1 = %d", targRow[0], rows, targCols[0], ((targRow[0]-1)*rows+targCols[0]-1));
 
