@@ -1,6 +1,7 @@
 #include <string>
 
 enum AnimalLabels {
+    lFlippedCard,
     lDog,
     lCat,
     lRabbit,
@@ -8,8 +9,7 @@ enum AnimalLabels {
     lBear,
     lFox,
     lSad,
-    lHappy,
-    lFlippedCard
+    lHappy    
 };
 
 class Icons {
@@ -20,11 +20,23 @@ class Icons {
 //4x4 grid must be 8 cards
 
 public:
-
     void ShuffleArray(AnimalLabels arr[], int size);
-    void PrintCards(int rows, int cols, AnimalLabels arrAnimals[], int tarRow[], int tarCol[], int arrMatch[]);
-    bool FindInArray(int arrMatch[], int size, enum AnimalLabels value);
-    std::string arrCards[lFlippedCard+1][9]{
+    void PrintCards(int rows, int cols, AnimalLabels arrAnimals[], int tarRow[], int tarCol[]);
+    //bool FindInArray(int arrMatch[], int size, enum AnimalLabels value);
+    bool FindInArray(int value);
+    int arrMatch[8]{};
+    std::string arrCards[lHappy+1][9]{
+        {
+            "#################",
+            "#       ##      #",
+            "#       ##      #",
+            "#       ##      #",
+            "# ############# #",
+            "#       ##      #",
+            "#       ##      #",
+            "#       ##      #",
+            "#################"
+        },
         {
             "#################",
             "#               #",
@@ -112,18 +124,6 @@ public:
             "#    #######    #",
             "#               #",
             "#################"
-        },
-        {
-            "#################",
-            "#       ##      #",
-            "#       ##      #",
-            "#       ##      #",
-            "# ############# #",
-            "#       ##      #",
-            "#       ##      #",
-            "#       ##      #",
-            "#################"
         }
     };
-
 };

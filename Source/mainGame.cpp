@@ -27,11 +27,12 @@ void SelectCards(int targRow[], int targCols[]){
     }
 }
 
-void MatchChecker(AnimalLabels animals[], int targRow[], int rows, int targCols[],  int arrMatch[], int arrMatchIndex){
+void MatchChecker(AnimalLabels animals[], int targRow[], int rows, int targCols[],  int arrMatch[], int &arrMatchIndex){
+    //check when the card match that the player selected
     if(animals[((targRow[0]-1)*rows+targCols[0]-1)] == animals[((targRow[1]-1)*rows+targCols[1]-1)]){
         //printf("\n%d ", animals[((targRow[0]-1)*rows+targCols[0]-1)]); 
         //printf("\n%d ", animals[((targRow[1]-1)*rows+targCols[1]-1)]); 
-        printf("\nMatch\n");
+        printf("\nMatch!\n");
         arrMatch[arrMatchIndex] = animals[((targRow[0]-1)*rows+targCols[0]-1)];
         arrMatchIndex++;
     }
@@ -39,84 +40,60 @@ void MatchChecker(AnimalLabels animals[], int targRow[], int rows, int targCols[
 
 int main(){
     Icons icons;
+    
 
     // Define the size of the grid
     int rows = 4;
     int cols = 4;
     int targRow[2];
     int targCols[2];
-    int arrMatch[8]{0,1,2,3,4,5,6,7};
+    int Tries=0;
     int arrMatchIndex = 0; // Initialize an index to keep track of the position in arrMatch
-
-
     AnimalLabels animals[18];
 
-    //Add it to function
+    //<Add it to function>
     // Initialize the array with 16 elements, repeating the animal labels
-    for (int i = 0; i < lFlippedCard; i++) {
-        animals[i] = animals[i + 8] = (enum AnimalLabels)i;
+    for (int i = 0; i < lHappy; i++) {
+        animals[i] = animals[i+8] = (enum AnimalLabels)(i+1);
     }
-
-    icons.ShuffleArray(animals, 16); // Shuffle the array
-
-    // Print the shuffled array For Debugging
+    
+    // Print the array For Debugging
     /*for (int i = 0; i < 16; i++) {
         printf("%d ", animals[i]);
     }*/
 
-    // Print the Cards
-    icons.PrintCards(rows, cols, animals, targRow, targCols, arrMatch);
+    icons.ShuffleArray(animals, 16); // Shuffle the array
 
-    // Add While when game is over
-    //system("cls");
-    /*for (int i = 0; i < 2; i++)
-    {
-        printf("Enter the Target row: ");
-        targRow[i]= InputHandler(1,4);
-
-        printf("Enter the Target collum: ");
-        targCols[i]= InputHandler(1,4);
-    }*/
-
+    //see the shuffled array values, cheats
     printf("\nShuffled array: ");    
     for (int i = 0; i < 16; i++) {
         printf("%d ", animals[i]);
     }
+    
+    // Print the Cards, keep it to the End
+    //icons.PrintCards(rows, cols, animals, targRow, targCols);
 
-    printf("\n");
+    //<Make a function>
+    //loop trough gameplay until you win
+    while (arrMatchIndex < 8){
+        icons.PrintCards(rows, cols, animals, targRow, targCols);
 
-    SelectCards(targRow, targCols);
+        SelectCards(targRow, targCols);
 
-    //Print the Cards
-    icons.PrintCards(rows, cols, animals, targRow, targCols, arrMatch);
+        MatchChecker(animals, targRow, rows, targCols, icons.arrMatch, arrMatchIndex);
 
-    /*printf("Row: ");
-    for (int i = 0; i < sizeof(targRow) / sizeof(targRow[0]); i++) {
-        printf("%d ", targRow[i]);
+        Tries++;
     }
 
-    printf("\nCols: ");
-    for (int i = 0; i < sizeof(targCols) / sizeof(targCols[0]); i++) {
-        printf("%d ", targCols[i]);
+    icons.PrintCards(rows, cols, animals, targRow, targCols);
+
+    printf("\nGAME OVER.");
+
+    printf("\nIt took you %d tries...", Tries);
+
+    //Print matched arrays. For Debugging
+    /*printf("\nMatch array: ");
+    for (int i = 0; i < sizeof(icons.arrMatch) / sizeof(icons.arrMatch[0]); i++) {
+        printf("%d ", icons.arrMatch[i]);
     }*/
-
-    printf("\nShuffled array: ");    
-    for (int i = 0; i < 16; i++) {
-        printf("%d ", animals[i]);
-    }
-
-    printf("\n");
-
-
-    MatchChecker(animals, targRow, rows, targCols, arrMatch, arrMatchIndex);
-
-
-    //printf("%d ", arrMatch[0]);
-
-    //printf("\n(%d-1) * %d + %d - 1 = %d", targRow[0], rows, targCols[0], ((targRow[0]-1)*rows+targCols[0]-1));
-
-    //printf("\n%d ", animals[((targRow[0]-1)*rows+targCols[0]-1)])
-
-
-
 }
