@@ -12,7 +12,7 @@ enum AnimalLabels {
     lHappy    
 };
 
-class Icons {
+class OGIcons {
 
 //icons
 //label

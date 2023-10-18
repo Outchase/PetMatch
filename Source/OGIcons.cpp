@@ -1,10 +1,10 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
-#include "Icons.h"
+#include "OGIcons.h"
 
 // Function to shuffle an array of enum values
-void Icons::ShuffleArray(enum AnimalLabels arr[], int size) {
+void OGIcons::ShuffleArray(enum AnimalLabels arr[], int size) {
     srand(time(NULL)); // Seed the random number generator with current time
     for (int i = size - 1; i > 0; i--) {
         int j = rand() % (i + 1); // Generate a random index between 0 and i
@@ -14,7 +14,7 @@ void Icons::ShuffleArray(enum AnimalLabels arr[], int size) {
     }
 }
 
-void Icons::PrintCards(int rows, int cols, AnimalLabels arrAnimals[], int tarRow[], int tarCol[]){
+void OGIcons::PrintCards(int rows, int cols, AnimalLabels arrAnimals[], int tarRow[], int tarCol[]){
     int count = 0;
     printf("\n");
     
@@ -41,7 +41,7 @@ void Icons::PrintCards(int rows, int cols, AnimalLabels arrAnimals[], int tarRow
     }
 }
 
-bool Icons::FindInArray(int value){
+bool OGIcons::FindInArray(int value){
     for (int i = 0; i < sizeof(arrMatch)/sizeof(arrMatch[0]); i++) {
         if (arrMatch[i] == value) {
            return true; // Value found in the array

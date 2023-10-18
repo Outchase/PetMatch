@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "Icons.h"
+#include "OGIcons.h"
 
 // g++ *.cpp -o maingame.exe
 
@@ -39,7 +39,7 @@ void MatchChecker(AnimalLabels animals[], int targRow[], int rows, int targCols[
 }
 
 int main(){
-    Icons icons;
+    OGIcons icons;
     
 
     // Define the size of the grid
