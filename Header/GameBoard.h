@@ -12,8 +12,8 @@ class GameBoard{
         bool IsMatch(int row1, int col1, int row2, int col2);
         bool IsGameOver();
         Card* GetCard(int row, int col);
-        void PrintVector(bool printShuffled);
-        ~GameBoard(); //destructor
+        void PrintVector();
+        ~GameBoard(); //Destructor
         /*bool FindInArray(int value);
         int arrMatch[8]{};*/
 

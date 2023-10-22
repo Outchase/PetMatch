@@ -3,11 +3,12 @@
 #include "../Header/GameBoard.h"
 #include "../Header/Card.h"
 
-//Returns a pointer
+//Get selected card and returns a pointer/ memory address
 Card* GameBoard::GetCard(int row, int col) {
         return cards[row * cols + col];
 }
 
+// create game board grid with rows and colums
 GameBoard::GameBoard(int rows, int cols){
     this->rows=rows;
     this->cols = cols;
@@ -20,6 +21,8 @@ GameBoard::GameBoard(int rows, int cols){
     }
 }
 
+//Destructor 
+//Frees memory by deleting allocated Card objects and clears cards containers
 GameBoard::~GameBoard() {
     //clean up memory by deleting the card objects
     for (Card* card : cards) {
@@ -67,11 +70,7 @@ bool GameBoard::IsMatch(int row1, int col1, int row2, int col2){
     Card* card1 = cards[(row1 - 1) * cols + (col1 - 1)];
     Card* card2 = cards[(row2 - 1) * cols + (col2 - 1)];
 
-    // Flip the cards
-    //card1.FlipCard();
-    //card2.FlipCard();
-
-    // Check if both cards have the same label
+    // Check if both cards have the same label and return true or false
     return (card1->GetLabel() == card2->GetLabel());
 }
 
@@ -83,20 +82,14 @@ bool GameBoard::IsGameOver(){
             return false;
         }
     }
-
     return true;
 }
 
-void GameBoard::PrintVector(bool printShuffled) {
+//*Cheats/Debugging*
+// Print the card vector 
+void GameBoard::PrintVector() {
     for (int i = 0; i < rows * cols; i++) {
         int label = cards[i]->GetLabel();
-
-        if (printShuffled) {
-            printf("%d ", label);
-            //printf("%d: %d ", i, label);
-        } else {
-            printf("%d ", label);
-            //printf("%d: %d ", i, label);
-        }
+        printf("%d ", label);
     }
 }

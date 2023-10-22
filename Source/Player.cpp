@@ -5,7 +5,7 @@
 int Player::InputHandler(int min, int max){
     int userInput;
         while (1) {
-            if (scanf("%d", &userInput) != 1 || userInput < min || userInput > max) {
+            if (scanf("%d", &userInput) != 1 || userInput < min || userInput > max) { //check if number is in range of 1-4
                 while (getchar() != '\n'); // Clear the input buffer
                 printf("Invalid input. Please enter a valid number between 1 and 4: ");
             } else {

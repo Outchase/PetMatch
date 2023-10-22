@@ -12,22 +12,22 @@ int main() {
     GameBoard* ptrGameBoard = new GameBoard(4, 4); //Create a game board with 4 rows and 4 columns
     
 
-    //*For Debugging*
-    // Print the initial state of the game board
+    //*Debugging*
+    // Print the initial state of the card vector
     /*printf("Initial Game Board:\n");
-    gameBoard.PrintVector(false);
+    ptrGameBoard->PrintVector();
     printf("\n\n");*/
 
     // Shuffle the cards
     ptrGameBoard->Shuffle();
 
     //*Cheats*
-    // Print the shuffled card 
-    printf("Shuffled Game Board:\n");
-    ptrGameBoard->PrintVector(true);
-    printf("\n\n");
+    // Print the shuffled card vector
+    /*printf("Shuffled Game Board:\n");
+    ptrGameBoard->PrintVector();
+    printf("\n\n");*/
 
-     // Game loop
+    // Game loop
     while (!ptrGameBoard->IsGameOver()) {
         //print flipped card
         ptrGameBoard->Print();
@@ -37,9 +37,9 @@ int main() {
         int col1 = ptrPlayer->SelectColumn();
         int row2 = ptrPlayer->SelectRow();
         int col2 = ptrPlayer->SelectColumn();
-        Tries++;
+        Tries++; //count each tries
 
-        // Flip the cards
+        // Flip the cards (open)
         ptrGameBoard->GetCard(row1-1, col1-1)->FlipCard();
         ptrGameBoard->GetCard(row2-1, col2-1)->FlipCard();
 
@@ -48,6 +48,7 @@ int main() {
 
         printf("\n");
 
+        //check when selction was a match
         if (ptrGameBoard->IsMatch(row1, col1, row2, col2)) {
             printf("Match found!\n\n");
             //player.ConfirmInput();
@@ -62,9 +63,7 @@ int main() {
             ptrGameBoard->GetCard(row2-1, col2-1)->FlipCard();
 
         }
-        
         Sleep(2000); // Sleep for 2 seconds (2000 milliseconds)
-
     }
 
     printf("It took you %d tries...", Tries);
