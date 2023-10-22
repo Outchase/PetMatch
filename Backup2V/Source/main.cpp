@@ -8,8 +8,8 @@
 int main() {
     //
     int Tries = 0; //count how many tries it took
-    Player* ptrPlayer= new Player; //Create a player
-    GameBoard* ptrGameBoard = new GameBoard(4, 4); //Create a game board with 4 rows and 4 columns
+    Player player; //Create a player
+    GameBoard gameBoard(4, 4); //Create a game board with 4 rows and 4 columns
     
 
     //*For Debugging*
@@ -19,61 +19,55 @@ int main() {
     printf("\n\n");*/
 
     // Shuffle the cards
-    ptrGameBoard->Shuffle();
+    gameBoard.Shuffle();
 
     //*Cheats*
     // Print the shuffled card 
     printf("Shuffled Game Board:\n");
-    ptrGameBoard->PrintVector(true);
+    gameBoard.PrintVector(true);
     printf("\n\n");
 
      // Game loop
-    while (!ptrGameBoard->IsGameOver()) {
+    while (!gameBoard.IsGameOver()) {
         //print flipped card
-        ptrGameBoard->Print();
+        gameBoard.Print();
 
         // Player selects cards
-        int row1 = ptrPlayer->SelectRow();
-        int col1 = ptrPlayer->SelectColumn();
-        int row2 = ptrPlayer->SelectRow();
-        int col2 = ptrPlayer->SelectColumn();
+        int row1 = player.SelectRow();
+        int col1 = player.SelectColumn();
+        int row2 = player.SelectRow();
+        int col2 = player.SelectColumn();
         Tries++;
 
         // Flip the cards
-        ptrGameBoard->GetCard(row1-1, col1-1)->FlipCard();
-        ptrGameBoard->GetCard(row2-1, col2-1)->FlipCard();
+        gameBoard.GetCard(row1-1, col1-1).FlipCard();
+        gameBoard.GetCard(row2-1, col2-1).FlipCard();
 
         //Print open cards
-        ptrGameBoard->Print();
+        gameBoard.Print();
 
         printf("\n");
 
-        if (ptrGameBoard->IsMatch(row1, col1, row2, col2)) {
+        if (gameBoard.IsMatch(row1, col1, row2, col2)) {
             printf("Match found!\n\n");
             //player.ConfirmInput();
 
         } else {
             printf("No match. Try again.\n\n");
 
+            Sleep(2000); // Sleep for 2 seconds (2000 milliseconds)
             //player.ConfirmInput();
             
             //close the cards
-            ptrGameBoard->GetCard(row1-1, col1-1)->FlipCard();
-            ptrGameBoard->GetCard(row2-1, col2-1)->FlipCard();
+            gameBoard.GetCard(row1-1, col1-1).FlipCard();
+            gameBoard.GetCard(row2-1, col2-1).FlipCard();
 
         }
-        
-        Sleep(2000); // Sleep for 2 seconds (2000 milliseconds)
-
     }
 
     printf("It took you %d tries...", Tries);
+
     printf("\nGAME OVER.");
-
-    // Clean up dynamic memory
-    delete ptrPlayer;
-    delete ptrGameBoard;
-
     return 0;
 }
 
