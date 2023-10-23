@@ -6,7 +6,6 @@
 
 
 int main() {
-    //
     int Tries = 0; //count how many tries it took
     Player* ptrPlayer= new Player; //Create a player
     GameBoard* ptrGameBoard = new GameBoard(4, 4); //Create a game board with 4 rows and 4 columns
@@ -14,18 +13,18 @@ int main() {
 
     //*Debugging*
     // Print the initial state of the card vector
-    /*printf("Initial Game Board:\n");
+    printf("Initial Game Board:\n");
     ptrGameBoard->PrintVector();
-    printf("\n\n");*/
+    printf("\n\n");
 
     // Shuffle the cards
     ptrGameBoard->Shuffle();
 
     //*Cheats*
     // Print the shuffled card vector
-    /*printf("Shuffled Game Board:\n");
+    printf("Shuffled Game Board:\n");
     ptrGameBoard->PrintVector();
-    printf("\n\n");*/
+    printf("\n\n");
 
     // Game loop
     while (!ptrGameBoard->IsGameOver()) {
