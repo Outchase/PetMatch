@@ -26,6 +26,7 @@ GameBoard::GameBoard(int rows, int cols){
 GameBoard::~GameBoard() {
     //clean up memory by deleting the card objects
     for (Card* card : cards) {
+        card= nullptr;
         delete card;
     }
     cards.clear();
